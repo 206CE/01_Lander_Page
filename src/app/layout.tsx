@@ -11,15 +11,22 @@ const AudioW = Audiowide({
 
 import Logo from "@/Components/Logo";
 import Navigation from "@/Components/Navigation";
-import Cta from "@/Components/Cta";
+import ContactInfo from "@/Components/ContactInfo";
+import Social from "@/Components/Social";
+import Legal from "@/Components/Legal";
+import Copyright from "@/Components/copyright";
+
 
 const nItems = [
   {label: "Home", href: "/"},
   {label: "Services", href: "/services"},
   {label: "About", href:"/about"},
-  {label: "Contact", href: "/contact"},
+  {label: "Contact", href: "/engagement"},
 ]
 
+const sMedia = [
+  "https://www.linkedin.com/in/jaco-botha-886b7b95/","https://github.com/206CE","https://www.facebook.com/jaco.botha.12139/"
+]
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -37,9 +44,15 @@ export default function RootLayout({
         <div className="logo-container">
           <Logo text="206CE" imagePath="/logo180.png" size={100} />
         </div>
-        <Navigation items={nItems} itemClassName="btn" />
+        <Navigation items={nItems} itemClassName="btn glow-text " />
       </header>
       <body className={`${AudioW.className} antialiased`}>{children}</body>
+      <footer className="">
+        <ContactInfo cellphone="+27 79 4972646" email="jacobotha206@gmail.com" />
+        <Social urls={sMedia} />
+        <Legal />
+        <Copyright />
+      </footer>
     </html>
   );
 }
