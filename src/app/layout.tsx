@@ -1,16 +1,25 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+
 import "./globals.css";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+import { Audiowide } from "next/font/google";
+
+const AudioW = Audiowide({
+  weight: '400',
   subsets: ["latin"],
 });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
+import Logo from "@/Components/Logo";
+import Navigation from "@/Components/Navigation";
+import Cta from "@/Components/Cta";
+
+const nItems = [
+  {label: "Home", href: "/"},
+  {label: "Services", href: "/services"},
+  {label: "About", href:"/about"},
+  {label: "Contact", href: "/contact"},
+]
+
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -24,11 +33,13 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
-        {children}
-      </body>
+      <header className="flex flex-row items-center gap-15">
+        <div className="logo-container">
+          <Logo text="206CE" imagePath="/logo180.png" size={100} />
+        </div>
+        <Navigation items={nItems} itemClassName="btn" />
+      </header>
+      <body className={`${AudioW.className} antialiased`}>{children}</body>
     </html>
   );
 }
