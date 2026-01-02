@@ -20,7 +20,8 @@ Alpha:
         Responsive: 1440x900
         0.0.0-alpha+001
         P1&P2
-
+        Load: 687ms Unthrottled
+        
 Beta:
     Design:
         Logo Og 1200x630 <1MiB, 200x200

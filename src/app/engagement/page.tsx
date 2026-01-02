@@ -5,7 +5,7 @@ export default function Engagement() {
   return (
     <>
       
-      <section>
+      <section className="flex flex-col justify-center">
         <Contacts />
       </section>
     </>

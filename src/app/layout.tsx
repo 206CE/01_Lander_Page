@@ -5,10 +5,11 @@ import "./globals.css";
 import { Audiowide } from "next/font/google";
 
 const AudioW = Audiowide({
-  weight: '400',
+  weight: "400",
   subsets: ["latin"],
 });
 
+import Container from "@/Components/Container";
 import Logo from "@/Components/Logo";
 import Navigation from "@/Components/Navigation";
 import ContactInfo from "@/Components/ContactInfo";
@@ -16,17 +17,18 @@ import Social from "@/Components/Social";
 import Legal from "@/Components/Legal";
 import Copyright from "@/Components/copyright";
 
-
 const nItems = [
-  {label: "Home", href: "/"},
-  {label: "Services", href: "/services"},
-  {label: "About", href:"/about"},
-  {label: "Contact", href: "/engagement"},
-]
+  { label: "Home", href: "/" },
+  { label: "Services", href: "/services" },
+  { label: "About", href: "/about" },
+  { label: "Contact", href: "/engagement" },
+];
 
 const sMedia = [
-  "https://www.linkedin.com/in/jaco-botha-886b7b95/","https://github.com/206CE","https://www.facebook.com/jaco.botha.12139/"
-]
+  "https://www.linkedin.com/in/jaco-botha-886b7b95/",
+  "https://github.com/206CE",
+  "https://www.facebook.com/jaco.botha.12139/",
+];
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -40,19 +42,32 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <header className="flex flex-row items-center gap-15">
-        <div className="logo-container">
-          <Logo text="206CE" imagePath="/logo180.png" size={100} />
-        </div>
-        <Navigation items={nItems} itemClassName="btn glow-text " />
-      </header>
-      <body className={`${AudioW.className} antialiased`}>{children}</body>
-      <footer className="">
-        <ContactInfo cellphone="+27 79 4972646" email="jacobotha206@gmail.com" />
-        <Social urls={sMedia} />
-        <Legal />
-        <Copyright />
-      </footer>
+      <body className={`${AudioW.className} antialiased`}>
+        <Container as={"nav"}>
+          <section className="flex flex-row items-center gap-15">
+            <div className="logo-container">
+              <Logo text="206CE" imagePath="/logo180.png" size={100} />
+            </div>
+            <Navigation items={nItems} itemClassName="btn glow-text " />
+          </section>
+        </Container>
+
+        {children}
+        <Container as={"footer"}>
+          {" "}
+          <section className="">
+            <div className="">
+              <ContactInfo
+                cellphone="+27 79 4972646"
+                email="jacobotha206@gmail.com"
+              />
+            </div>
+            <Social urls={sMedia} linkStyle="p-4"/>
+            <Legal />
+            <Copyright />
+          </section>
+        </Container>
+      </body>
     </html>
   );
 }
